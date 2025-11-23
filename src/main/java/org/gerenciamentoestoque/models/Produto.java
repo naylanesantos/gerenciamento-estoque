@@ -20,6 +20,10 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getNome() {
         return nome;
     }

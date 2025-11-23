@@ -15,6 +15,12 @@ public class App {
         produtoService.listarProdutos();
         produtoService.inserirProduto(new Produto("fruteira", 100));
         List<Produto> l2 = produtoService.listarProdutos();
+        Produto ultimoProduto = l2.get(l2.size() - 1);
+        produtoService.excluirProduto(ultimoProduto.getId());
+        produtoService.listarProdutos();
+        produtoService.atualizarProduto(2, 20);
+        produtoService.listarProdutos();
+
         connection.close();
     }
 }
