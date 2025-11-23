@@ -17,24 +17,16 @@ public class ProdutoService {
         this.conexao = conexao;
     }
 
-    public Produto inserirProduto(Produto produto) {
+    public void inserirProduto(Produto produto) {
         try {
             Statement statement = this.conexao.createStatement();
-            ResultSet resultSet = statement.executeUpdate("insert into produtos (nome, quantidade)");
-            retorno = new ArrayList<>();
-
-            while (resultSet.next()) {
-                int id = resultSet.getInt("ID");
-                String nome = resultSet.getString("nome");
-                int quantidade = resultSet.getInt("quantidade");
-
-                Produto produtinho = new Produto(id, nome, quantidade);
-                retorno.add(produtinho);
-            }
+            statement.executeUpdate(
+                    String.format("insert into produtos (nome, quantidade) values ('%s', %d)",
+                            produto.getNome(), produto.getQuantidade())
+            );
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
     }
 
     public List< Produto > listarProdutos() {

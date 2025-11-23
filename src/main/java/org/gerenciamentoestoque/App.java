@@ -5,6 +5,7 @@ import org.gerenciamentoestoque.database.ProdutoService;
 import org.gerenciamentoestoque.models.Produto;
 
 import java.sql.Connection;
+import java.util.List;
 
 public class App {
     public static void main( String[] args ) throws Exception {
@@ -12,5 +13,8 @@ public class App {
         Connection connection = connectionFactory.getConnection();
         ProdutoService produtoService = new ProdutoService(connection);
         produtoService.listarProdutos();
+        produtoService.inserirProduto(new Produto("fruteira", 100));
+        List<Produto> l2 = produtoService.listarProdutos();
+        connection.close();
     }
 }
