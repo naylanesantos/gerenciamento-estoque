@@ -1,8 +1,10 @@
 package org.gerenciamentoestoque;
 
-public class App 
-{
-    public static void main( String[] args ) {
-        System.out.println( "Hello World!" );
+import org.gerenciamentoestoque.database.ConnectionFactory;
+
+public class App {
+    public static void main( String[] args ) throws Exception {
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        connectionFactory.getConnection();
     }
 }
